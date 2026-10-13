@@ -1,6 +1,6 @@
 # Prompts
 
-The assignment says any AI tooling may be used and asks for the prompts to be shared. This project was built with **Claude Code** (Anthropic's agentic CLI, Claude Opus model) running in my terminal. It worked directly in this repository: it wrote code, ran `go test`, `vitest`, the linters and the dev servers, and checked the UI in a headless browser.
+The assignment says any AI tooling may be used and asks for the prompts to be shared. This project was built with an AI coding agent (a CLI agent running in my terminal). It worked directly in this repository: it wrote code, ran `go test`, `vitest`, the linters and the dev servers, and checked the UI in a headless browser.
 
 ## Prompt 1 — the only top-level instruction
 
@@ -32,3 +32,4 @@ Any follow-up prompts I gave are listed below.
 1. *(with a screenshot of the app in the browser)* — Original: "bu localhosta mı çalışsın istiyorlar bu şekilde" · English: "Do they want it to run on localhost like this?" (Answer: yes. The brief asks for a repository plus setup instructions, so reviewers run it locally with Docker or `go run` + `npm run dev`. No hosting is required.)
 2. *(with a screenshot of the Greenhouse submission form)* — Original: "şimdi ben bu projeyi nasıl göndereceğim onlara?" · English: "How do I send this project to them now?" (Then chose the repository name `fullstack-calculator` and the commit e-mail.)
 3. *(with a screenshot of the GitHub repository page)* — Original: "harika ben şimdi direkt bu linki mi atacağım onlara?" · English: "Great, so do I just send them this link?"
+4. Original: "githubda hiç bir yerde [AI aracının] ismi geçmemeli … ismini kaldır her yerden" · English: "The [AI tool's] name shouldn't appear anywhere on GitHub … remove it everywhere." (Tool-name attribution was removed from the commits and docs; the disclosure that an AI agent was used was kept, because the assignment asks for the prompts.)

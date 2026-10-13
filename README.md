@@ -254,4 +254,4 @@ CI (`.github/workflows/ci.yml`) runs gofmt, `go vet`, race-enabled tests, oxlint
 
 ## AI usage
 
-The assignment allows any AI tooling. I used **Claude Code** (Anthropic's CLI agent) as a pair programmer for scaffolding, tests and documentation. I reviewed, ran and adjusted all of the output. The prompts are listed in [PROMPTS.md](PROMPTS.md).
+The assignment allows any AI tooling. I built this project with an AI coding agent working from my prompts in the terminal. It wrote and ran the code, the tests and the documentation. All prompts are listed in [PROMPTS.md](PROMPTS.md), as the assignment requests.
