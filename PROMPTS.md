@@ -29,4 +29,4 @@ Any follow-up prompts I gave are listed below.
 
 ## Follow-up prompts
 
-*(none beyond the instruction above at the time of writing)*
+1. *(with a screenshot of the app in the browser)* — Original: "bu localhosta mı çalışsın istiyorlar bu şekilde" · English: "Do they want it to run on localhost like this?" (Answer: yes. The brief asks for a repository plus setup instructions, so reviewers run it locally with Docker or `go run` + `npm run dev`. No hosting is required.)
