@@ -34,3 +34,4 @@ Any follow-up prompts I gave are listed below.
 3. *(with a screenshot of the GitHub repository page)* — Original: "harika ben şimdi direkt bu linki mi atacağım onlara?" · English: "Great, so do I just send them this link?"
 4. Original: "githubda hiç bir yerde [AI aracının] ismi geçmemeli … ismini kaldır her yerden" · English: "The [AI tool's] name shouldn't appear anywhere on GitHub … remove it everywhere." (Tool-name attribution was removed from the commits and docs; the disclosure that an AI agent was used was kept, because the assignment asks for the prompts.)
 5. Original: "benim adım görünsün [AI aracı] görünmesin. bu şekilde düzenle" · English: "Make my name show up instead of the [AI tool]; fix it however you need to." (Commit author e-mail was switched to my GitHub-linked address.)
+6. Original: "old olanı silmek lazım o zaman değil mi?" · English: "So I should delete the old one, right?"
