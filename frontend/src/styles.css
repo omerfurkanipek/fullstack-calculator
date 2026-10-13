@@ -1,0 +1,318 @@
+:root {
+  --bg: #f4f2fb;
+  --surface: #ffffff;
+  --text: #17141f;
+  --text-muted: #6b6680;
+  --display-bg: #1b1726;
+  --display-text: #ffffff;
+  --display-muted: #a49fba;
+  --error: #ff8a8a;
+  --key-digit: #f1eff7;
+  --key-digit-hover: #e6e2f2;
+  --key-function: #ddd8ee;
+  --key-function-hover: #cfc8e6;
+  --accent: #392d91;
+  --accent-hover: #2d2375;
+  --accent-text: #ffffff;
+  --accent-soft: #e4dfff;
+  --focus: #8b7cf6;
+  --shadow: 0 1px 2px rgb(23 20 31 / 6%), 0 12px 32px rgb(23 20 31 / 10%);
+  --radius: 24px;
+  --key-radius: 16px;
+
+  color-scheme: light dark;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121019;
+    --surface: #1d1a27;
+    --text: #f2f0f8;
+    --text-muted: #9c97b0;
+    --display-bg: #0c0a12;
+    --key-digit: #2a2637;
+    --key-digit-hover: #353046;
+    --key-function: #3a3550;
+    --key-function-hover: #463f60;
+    --accent: #7c6cf2;
+    --accent-hover: #6c5be6;
+    --accent-soft: #2f2a52;
+    --shadow: 0 12px 32px rgb(0 0 0 / 40%);
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--bg);
+}
+
+.app {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: max(24px, env(safe-area-inset-top)) 16px max(24px, env(safe-area-inset-bottom));
+}
+
+.app__header {
+  text-align: center;
+}
+
+.app__title {
+  margin: 0;
+  font-size: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.app__subtitle,
+.app__hint {
+  margin: 4px 0 0;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+.app__hint {
+  max-width: 380px;
+  text-align: center;
+  line-height: 1.8;
+}
+
+kbd {
+  font: inherit;
+  font-size: 0.75rem;
+  padding: 1px 6px;
+  border-radius: 6px;
+  background: var(--surface);
+  border: 1px solid var(--key-function);
+}
+
+.calculator {
+  width: 100%;
+  max-width: 380px;
+  padding: 16px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+/* Display */
+
+.display {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  padding: 20px 20px 18px;
+  margin-bottom: 16px;
+  min-height: 132px;
+  justify-content: flex-end;
+  border-radius: calc(var(--radius) - 8px);
+  background: var(--display-bg);
+  color: var(--display-text);
+  font-variant-numeric: tabular-nums;
+}
+
+.display__expression {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--display-muted);
+  font-size: 1rem;
+}
+
+.display__value {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  text-align: right;
+  font-size: var(--display-size, 3rem);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.display__value--md {
+  font-size: 2.4rem;
+}
+
+.display__value--sm {
+  font-size: 1.9rem;
+}
+
+.display__value--xs {
+  font-size: 1.5rem;
+}
+
+.display__value--error {
+  color: var(--error);
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+/* Thin progress bar; delayed so fast responses never flash it. */
+.display__progress {
+  position: absolute;
+  inset: auto 0 0;
+  height: 3px;
+  opacity: 0;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  background-size: 50% 100%;
+  background-repeat: no-repeat;
+}
+
+.display__progress--active {
+  animation:
+    progress-in 0s linear 150ms forwards,
+    progress-slide 900ms ease-in-out 150ms infinite;
+}
+
+@keyframes progress-in {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes progress-slide {
+  from {
+    background-position: -100% 0;
+  }
+  to {
+    background-position: 200% 0;
+  }
+}
+
+/* Keypad */
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(56px, 64px);
+  gap: 10px;
+}
+
+.key {
+  border: 0;
+  border-radius: var(--key-radius);
+  font: inherit;
+  font-size: 1.375rem;
+  color: var(--text);
+  cursor: pointer;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background-color 120ms ease,
+    transform 80ms ease;
+}
+
+.key:active {
+  transform: scale(0.96);
+}
+
+.key:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.key--digit {
+  background: var(--key-digit);
+}
+
+.key--function {
+  background: var(--key-function);
+  font-size: 1.125rem;
+}
+
+.key--operator {
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 1.5rem;
+}
+
+.key--equals {
+  background: var(--accent);
+  color: var(--accent-text);
+  font-size: 1.75rem;
+}
+
+.key--active {
+  background: var(--accent);
+  color: var(--accent-text);
+}
+
+.key--wide {
+  grid-column: span 2;
+}
+
+.key--tall {
+  grid-row: span 2;
+}
+
+@media (hover: hover) {
+  .key--digit:hover {
+    background: var(--key-digit-hover);
+  }
+
+  .key--function:hover {
+    background: var(--key-function-hover);
+  }
+
+  .key--equals:hover,
+  .key--active:hover {
+    background: var(--accent-hover);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .key--operator {
+    color: #d8d1ff;
+  }
+}
+
+@media (max-width: 380px) {
+  .calculator {
+    padding: 12px;
+  }
+
+  .keypad {
+    gap: 8px;
+  }
+
+  .display {
+    --display-size: 2.5rem;
+  }
+}
+
+/* Keyboard shortcuts are irrelevant on touch-only devices. */
+@media (hover: none) {
+  .app__hint {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .key,
+  .display__progress--active {
+    transition: none;
+    animation: none;
+  }
+
+  .display__progress--active {
+    opacity: 1;
+  }
+}
