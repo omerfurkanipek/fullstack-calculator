@@ -8,7 +8,7 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/omerfurkanipek/sezzle-calculator/backend/internal/calculator"
+	"github.com/omerfurkanipek/fullstack-calculator/backend/internal/calculator"
 )
 
 // maxBodyBytes caps request bodies; a calculation payload is a few dozen bytes.

@@ -59,10 +59,10 @@ jobs:
     needs: [backend, frontend]
     steps:
       - uses: actions/checkout@v4
-      - run: docker build -t sezzle-calculator .
+      - run: docker build -t fullstack-calculator .
       - name: Run and probe
         run: |
-          docker run -d --name calc -p 8080:8080 sezzle-calculator
+          docker run -d --name calc -p 8080:8080 fullstack-calculator
           for i in $(seq 1 20); do curl -fs localhost:8080/healthz && break; sleep 1; done
           curl -fs localhost:8080/ | grep -q '<div id="root">'
           curl -fs -X POST localhost:8080/api/v1/add -H 'Content-Type: application/json' -d '{"a":2,"b":3}' | grep -q '"result":5'

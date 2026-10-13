@@ -31,7 +31,7 @@ lint: ## Static checks for both layers
 	cd frontend && npm run lint && npm run typecheck
 
 docker-build: ## Build the full-stack image
-	docker build -t sezzle-calculator .
+	docker build -t fullstack-calculator .
 
 docker-run: docker-build ## Run the full-stack image on http://localhost:8080
-	docker run --rm -p 8080:8080 sezzle-calculator
+	docker run --rm -p 8080:8080 fullstack-calculator

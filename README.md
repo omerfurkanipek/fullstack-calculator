@@ -38,8 +38,8 @@ A calculator with a **React + TypeScript** frontend and a **Go** REST microservi
 ### Option A — Docker (one command)
 
 ```bash
-docker build -t sezzle-calculator .
-docker run --rm -p 8080:8080 sezzle-calculator
+docker build -t fullstack-calculator .
+docker run --rm -p 8080:8080 fullstack-calculator
 # open http://localhost:8080
 ```
 

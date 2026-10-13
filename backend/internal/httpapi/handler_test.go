@@ -7,7 +7,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/omerfurkanipek/sezzle-calculator/backend/internal/calculator"
+	"github.com/omerfurkanipek/fullstack-calculator/backend/internal/calculator"
 )
 
 func newTestServer(t *testing.T) http.Handler {

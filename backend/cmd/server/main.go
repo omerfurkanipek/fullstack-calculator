@@ -12,9 +12,9 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/omerfurkanipek/sezzle-calculator/backend/internal/calculator"
-	"github.com/omerfurkanipek/sezzle-calculator/backend/internal/config"
-	"github.com/omerfurkanipek/sezzle-calculator/backend/internal/httpapi"
+	"github.com/omerfurkanipek/fullstack-calculator/backend/internal/calculator"
+	"github.com/omerfurkanipek/fullstack-calculator/backend/internal/config"
+	"github.com/omerfurkanipek/fullstack-calculator/backend/internal/httpapi"
 )
 
 func main() {

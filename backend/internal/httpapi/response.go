@@ -6,7 +6,7 @@ import (
 	"log/slog"
 	"net/http"
 
-	"github.com/omerfurkanipek/sezzle-calculator/backend/internal/calculator"
+	"github.com/omerfurkanipek/fullstack-calculator/backend/internal/calculator"
 )
 
 // Machine-readable error codes returned in the "error.code" field. Clients

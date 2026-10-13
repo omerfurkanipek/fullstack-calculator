@@ -10,7 +10,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/omerfurkanipek/sezzle-calculator/backend/internal/config"
+	"github.com/omerfurkanipek/fullstack-calculator/backend/internal/config"
 )
 
 func TestNewHandlerServesAPIWithCORS(t *testing.T) {
