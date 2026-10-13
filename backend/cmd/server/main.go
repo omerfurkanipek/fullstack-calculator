@@ -25,21 +25,25 @@ func main() {
 	}
 }
 
+// newHandler wires routes and middleware; kept separate from run for testing.
+func newHandler(cfg config.Config, logger *slog.Logger) http.Handler {
+	mux := http.NewServeMux()
+	httpapi.NewHandler(calculator.New()).Register(mux)
+	if cfg.StaticDir != "" {
+		mux.Handle("/", httpapi.SPA(os.DirFS(cfg.StaticDir)))
+	}
+	return httpapi.Chain(mux, httpapi.Recover(logger), httpapi.Logger(logger), httpapi.CORS(cfg.AllowedOrigins))
+}
+
 func run(logger *slog.Logger) error {
 	cfg, err := config.Load(os.Getenv)
 	if err != nil {
 		return err
 	}
 
-	mux := http.NewServeMux()
-	httpapi.NewHandler(calculator.New()).Register(mux)
-	if cfg.StaticDir != "" {
-		mux.Handle("/", httpapi.SPA(os.DirFS(cfg.StaticDir)))
-	}
-
 	srv := &http.Server{
 		Addr:              fmt.Sprintf(":%d", cfg.Port),
-		Handler:           httpapi.Chain(mux, httpapi.Recover(logger), httpapi.Logger(logger), httpapi.CORS(cfg.AllowedOrigins)),
+		Handler:           newHandler(cfg, logger),
 		ReadHeaderTimeout: 5 * time.Second,
 		ReadTimeout:       10 * time.Second,
 		WriteTimeout:      10 * time.Second,
