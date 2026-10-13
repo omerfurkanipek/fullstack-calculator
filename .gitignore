@@ -1,0 +1,15 @@
+# Go
+backend/bin/
+backend/coverage.out
+backend/coverage.html
+
+# Node
+node_modules/
+frontend/dist/
+frontend/coverage/
+
+# Misc
+.DS_Store
+*.log
+.env
+.env.local
