@@ -31,3 +31,4 @@ Any follow-up prompts I gave are listed below.
 
 1. *(with a screenshot of the app in the browser)* — Original: "bu localhosta mı çalışsın istiyorlar bu şekilde" · English: "Do they want it to run on localhost like this?" (Answer: yes. The brief asks for a repository plus setup instructions, so reviewers run it locally with Docker or `go run` + `npm run dev`. No hosting is required.)
 2. *(with a screenshot of the Greenhouse submission form)* — Original: "şimdi ben bu projeyi nasıl göndereceğim onlara?" · English: "How do I send this project to them now?" (Then chose the repository name `fullstack-calculator` and the commit e-mail.)
+3. *(with a screenshot of the GitHub repository page)* — Original: "harika ben şimdi direkt bu linki mi atacağım onlara?" · English: "Great, so do I just send them this link?"
